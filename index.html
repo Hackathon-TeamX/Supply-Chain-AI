@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonomous Supply Chain Rescue AI</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="background-effects">
+        <div class="particles-container"></div>
+        <div class="scanlines"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-network-wired"></i>
+                <span class="logo-text">AUTONOMOUS SUPPLY CHAIN AI</span>
+            </div>
+            <div class="header-stats">
+                <div class="stat-item">
+                    <span class="stat-label">SYSTEM STATUS</span>
+                    <span class="stat-value status-online">ONLINE</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">AI LEVEL</span>
+                    <span class="stat-value" id="automationLevel">89%</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <ul class="nav-menu">
+                <li class="nav-item active" data-view="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </li>
+                <li class="nav-item" data-view="inventory">
+                    <i class="fas fa-boxes"></i>
+                    <span>Inventory</span>
+                </li>
+                <li class="nav-item" data-view="forecasting">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Forecasting</span>
+                </li>
+                <li class="nav-item" data-view="suppliers">
+                    <i class="fas fa-handshake"></i>
+                    <span>Suppliers</span>
+                </li>
+                <li class="nav-item" data-view="logistics">
+                    <i class="fas fa-truck"></i>
+                    <span>Logistics</span>
+                </li>
+                <li class="nav-item" data-view="crisis">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Crisis</span>
+                </li>
+                <li class="nav-item" data-view="analytics">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Analytics</span>
+                </li>
+                <li class="nav-item" data-view="assistant">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Assistant</span>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <!-- Dashboard View -->
+            <div class="view active" id="dashboard-view">
+                <h1 class="view-title">Mission Control Dashboard</h1>
+                
+                <!-- Key Metrics -->
+                <div class="metrics-grid">
+                    <div class="metric-card critical">
+                        <div class="metric-icon"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="metric-info">
+                            <span class="metric-label">Total Inventory Value</span>
+                            <span class="metric-value" id="totalValue">$2,847,520</span>
+                        </div>
+                        <div class="metric-trend up">+5.2%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="fas fa-users"></i></div>
+                        <div class="metric-info">
+                            <span class="metric-label">Active Suppliers</span>
+                            <span class="metric-value" id="activeSuppliers">47</span>
+                        </div>
+                        <div class="metric-trend up">+3</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="fas fa-clock"></i></div>
+                        <div class="metric-info">
+                            <span class="metric-label">Avg Delivery Time</span>
+                            <span class="metric-value" id="avgDelivery">12.4 days</span>
+                        </div>
+                        <div class="metric-trend down">-8%</div>
+                    </div>
+                    <div class="metric-card success">
+                        <div class="metric-icon"><i class="fas fa-piggy-bank"></i></div>
+                        <div class="metric-info">
+                            <span class="metric-label">Cost Savings</span>
+                            <span class="metric-value" id="costSavings">18.7%</span>
+                        </div>
+                        <div class="metric-trend up">+2.3%</div>
+                    </div>
+                </div>
+
+                <!-- Real-time Alerts -->
+                <div class="alerts-section">
+                    <h2>Real-time Alerts</h2>
+                    <div class="alerts-container" id="alertsContainer">
+                        <!-- Alerts will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Dashboard Charts -->
+                <div class="dashboard-charts">
+                    <div class="chart-container">
+                        <h3>Supply Chain Network</h3>
+                        <img src="https://user-gen-media-assets.s3.amazonaws.com/gemini_images/f6990f04-b491-48fd-a840-2a3dddb217eb.png" alt="3D Supply Chain Network" class="network-visualization">
+                    </div>
+                    <div class="chart-container">
+                        <h3>Inventory Levels</h3>
+                        <div class="chart-wrapper" style="position: relative; height: 300px;">
+                            <canvas id="inventoryChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inventory View -->
+            <div class="view" id="inventory-view">
+                <h1 class="view-title">Autonomous Inventory Management</h1>
+                <div class="inventory-grid" id="inventoryGrid">
+                    <!-- Inventory items will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Forecasting View -->
+            <div class="view" id="forecasting-view">
+                <h1 class="view-title">AI-Powered Demand Forecasting</h1>
+                <div class="forecasting-container">
+                    <div class="chart-container full-width">
+                        <h3>Demand Prediction Model</h3>
+                        <div class="chart-wrapper" style="position: relative; height: 400px;">
+                            <canvas id="forecastChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Suppliers View -->
+            <div class="view" id="suppliers-view">
+                <h1 class="view-title">Supplier Network & AI Negotiations</h1>
+                <div class="suppliers-grid" id="suppliersGrid">
+                    <!-- Suppliers will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Logistics View -->
+            <div class="view" id="logistics-view">
+                <h1 class="view-title">Logistics Hub & Route Optimization</h1>
+                <div class="logistics-container">
+                    <div class="routes-section">
+                        <h3>Active Routes</h3>
+                        <div class="routes-grid" id="routesGrid">
+                            <!-- Routes will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Crisis Management View -->
+            <div class="view" id="crisis-view">
+                <h1 class="view-title">Crisis Management Center</h1>
+                <div class="crisis-dashboard">
+                    <div class="risk-meter">
+                        <h3>Current Risk Level</h3>
+                        <div class="risk-gauge">
+                            <div class="risk-value" id="riskScore">2.3</div>
+                            <div class="risk-label">LOW RISK</div>
+                        </div>
+                    </div>
+                    <div class="crisis-alerts">
+                        <h3>Crisis Alerts</h3>
+                        <div class="crisis-alerts-list" id="crisisAlerts">
+                            <!-- Crisis alerts will be populated -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics View -->
+            <div class="view" id="analytics-view">
+                <h1 class="view-title">Analytics Center</h1>
+                <div class="analytics-dashboard">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1755930001/pplx_project_search_images/5dc1db94dd565e41e289d4a5f80a60a9bd43b252.png" alt="Advanced Analytics Dashboard" class="analytics-visual">
+                </div>
+            </div>
+
+            <!-- AI Assistant View -->
+            <div class="view" id="assistant-view">
+                <h1 class="view-title">AI Assistant - Gemini Integration</h1>
+                <div class="chat-container">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message ai-message">
+                            <div class="message-avatar"><i class="fas fa-robot"></i></div>
+                            <div class="message-content">
+                                <div class="typing-animation">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <p>Hello! I'm your Autonomous Supply Chain AI Assistant. I can help you optimize inventory, negotiate with suppliers, predict demand, and manage logistics. What would you like to know?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input-container">
+                        <input type="text" id="chatInput" placeholder="Ask me anything about your supply chain..." class="chat-input">
+                        <button id="sendMessage" class="chat-send-btn"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner-ring"></div>
+            <div class="loading-text">INITIALIZING AI SYSTEMS...</div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
